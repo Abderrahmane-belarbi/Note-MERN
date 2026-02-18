@@ -2,7 +2,18 @@ import { Edit, Trash2Icon } from "lucide-react";
 import { Link } from "react-router";
 import { formatDate } from "../../../backend/lib/utils.js";
 
-export default function NoteCard({ note }) {
+export default function NoteCard({ note, setNotes }) {
+  async function handleDelete(id) {
+    try {
+      const deleted = await fetch(`http://localhost:3000/api/notes/${id}`, {
+        method: "DELETE",
+      });
+      if(!deleted) console.log("Note not found, can't delete");
+      setNotes((prev) => prev.filter((note) => note._id !== id));
+    } catch (error) {
+      console.log("deleting note operation failed");
+    }
+  } 
   return (
     <div
       key={note.title}
@@ -18,7 +29,7 @@ export default function NoteCard({ note }) {
           <button onClick={() => {}}>
             <Edit className="text-gray-100 cursor-pointer" size={16}/>
           </button>
-          <button onClick={() => {}}>
+          <button onClick={() => {handleDelete(note._id)}}>
             <Trash2Icon className="text-red-400 cursor-pointer" size={16}/>
           </button>
         </div>

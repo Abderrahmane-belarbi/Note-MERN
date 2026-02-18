@@ -26,10 +26,10 @@ export default function HomePage() {
     <Navbar />
     <div className="max-w-7xl mx-auto mt-8">
       {rateLimited && <RateLimitedUI />}
-      {loading && <p className="text-white">Loading...</p>}
-      { notes.length > 0 && <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-        {notes.map((note) => <NoteCard key={note._id} note={note}/>)}
-      </div>}
+      {loading && <p className="w-full flex items-center justify-center text-white mx-auto my-20">Loading...</p>}
+      { notes.length > 0 ? <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
+        {notes.map((note) => <NoteCard key={note._id} note={note} setNotes={setNotes}/>)}
+      </div> : !loading && <p className="text-white text-center mt-20">No notes found. Create your first note!</p>}
     </div>
   </div>;
 }
