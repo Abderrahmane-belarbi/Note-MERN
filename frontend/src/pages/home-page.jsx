@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import RateLimitedUI from "../components/RateLimitedUI";
+import NoteCard from "../components/NoteCard";
 export default function HomePage() {
   const [rateLimited, setRateLimited] = useState(false);
   const [notes, setNotes] = useState([]);
@@ -23,9 +24,12 @@ export default function HomePage() {
   }, [])
   return <div className="bg-[#181818] min-h-dvh">
     <Navbar />
-    {rateLimited && <RateLimitedUI />}
-    {notes.map((note) => (
-      <p className="text-white" key={note.title}>{note.title}</p>
-    ))}
+    <div className="max-w-7xl mx-auto mt-8">
+      {rateLimited && <RateLimitedUI />}
+      {loading && <p className="text-white">Loading...</p>}
+      { notes.length > 0 && <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {notes.map((note) => <NoteCard key={note._id} note={note}/>)}
+      </div>}
+    </div>
   </div>;
 }
