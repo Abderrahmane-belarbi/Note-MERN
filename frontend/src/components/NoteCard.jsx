@@ -6,11 +6,11 @@ export default function NoteCard({ note }) {
   return (
     <div
       key={note.title}
-      className="min-w-sm bg-[#262626] border-t-4 border-[#00B7B5] rounded-lg p-6 hover:shadow-xl transition-shadow duration-200"
+      className="flex flex-col justify-between min-w-sm h-44 bg-[#262626] border-t-4 border-[#00B7B5] rounded-lg p-6 hover:shadow-xl transition-shadow duration-200"
     >
-      <Link to={`/notes/${note._id}`}>
-        <h1 className="text-xl font-bold text-white">{note.title}</h1>
-        <p className="text-gray-400 line-clamp-3">{note.content}</p>
+      <Link to={`/notes/${note._id}`} className="flex flex-col gap-2">
+        <h1 className="text-[22px] capitalize font-bold text-white">{note.title}</h1>
+        <p className="text-[16px] text-gray-400 line-clamp-3">{note.content}</p>
       </Link>
       <div className="mt-4 flex items-center justify-between">
         <p className="text-gray-400 text-sm">{formatDate(note.createdAt)}</p>

@@ -27,7 +27,7 @@ export default function HomePage() {
     <div className="max-w-7xl mx-auto mt-8">
       {rateLimited && <RateLimitedUI />}
       {loading && <p className="text-white">Loading...</p>}
-      { notes.length > 0 && <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      { notes.length > 0 && <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
         {notes.map((note) => <NoteCard key={note._id} note={note}/>)}
       </div>}
     </div>

@@ -11,7 +11,12 @@ export default function Navbar() {
             Note
           </h1>
           <Link to="/create">
-            <button className="flex items-center gap-1 bg-[#005461] text-[#30caca] hover:bg-[#004450] text-sm font-medium cursor-pointer rounded-xl px-4 py-2">
+            <button
+              className="flex items-center gap-1 px-6 py-3 rounded-xl text-sm font-medium 
+                            bg-[#00918e] hover:bg-[#00B7B5]
+                            transition-all duration-200 
+                            shadow-lg shadow-[#00B7B5]/20 cursor-pointer"
+            >
             <PlusIcon size={16}/>
               Create Note
             </button>
