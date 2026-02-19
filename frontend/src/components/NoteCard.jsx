@@ -1,8 +1,9 @@
 import { Edit, Trash2Icon } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { formatDate } from "../../../backend/lib/utils.js";
 
 export default function NoteCard({ note, setNotes }) {
+  const navigator = useNavigate();
   async function handleDelete(id) {
     try {
       const deleted = await fetch(`http://localhost:3000/api/notes/${id}`, {
@@ -26,7 +27,7 @@ export default function NoteCard({ note, setNotes }) {
       <div className="mt-4 flex items-center justify-between">
         <p className="text-gray-400 text-sm">{formatDate(note.createdAt)}</p>
         <div className="flex items-center gap-4">
-          <button onClick={() => {}}>
+          <button onClick={() => {navigator(`/note/${note._id}`)}}>
             <Edit className="text-gray-100 cursor-pointer" size={16}/>
           </button>
           <button onClick={() => {handleDelete(note._id)}}>

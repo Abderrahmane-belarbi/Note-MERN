@@ -41,6 +41,7 @@ export async function updateNote(req, res) {
   try {
     const _id = req.params.id;
     const { title, content } = req.body;
+    console.log(title, content);
     const updatedNote = await Note.findOneAndUpdate(
       { _id },
       { title, content },

@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
 import HomePage from "./pages/home-page";
 import CreateNotePage from "./pages/create-page";
-import NoteDetailedPage from "./pages/note-detiled-page";
+import DetailedPage from "./pages/detiled-page";
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
       <Routes>
         <Route path="" element={<HomePage />}/>
         <Route path="/create" element={<CreateNotePage />}/>
-        <Route path="/note/:id" element={<NoteDetailedPage />}/>
+        <Route path="/note/:id" element={<DetailedPage />}/>
       </Routes>
     </div>
   )

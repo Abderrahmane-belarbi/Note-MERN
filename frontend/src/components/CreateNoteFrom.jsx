@@ -4,7 +4,10 @@ import { useNavigate } from "react-router";
 export default function CreateNoteForm() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+
   const navigate = useNavigate();
+  console.log({title, content});
+
   async function handleSubmit(e) {
     e.preventDefault();
     console.log("Submitted:", { title, content });
@@ -72,7 +75,7 @@ export default function CreateNoteForm() {
         {/* Button */}
         <div className="flex justify-end">
           <button
-            type="submit"
+            onClick={handleSubmit}
             className="px-6 py-3 rounded-xl text-sm font-medium 
                            bg-[#00918e] hover:bg-[#00B7B5]
                            transition-all duration-200 
