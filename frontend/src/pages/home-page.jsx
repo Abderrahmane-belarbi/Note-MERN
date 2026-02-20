@@ -10,7 +10,7 @@ export default function HomePage() {
     async function initNotes() {
       try {
         setLoading(true);
-        const res = await fetch('http://localhost:3000/api/notes');
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL || ""}/api/notes`);
         const json = await res.json();
         console.log("data:", json);
         setNotes(json.data);

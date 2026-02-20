@@ -12,7 +12,7 @@ export default function CreateNoteForm() {
     e.preventDefault();
     console.log("Submitted:", { title, content });
     try {
-      const response = await fetch("http://localhost:3000/api/notes", {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL || ""}/api/notes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

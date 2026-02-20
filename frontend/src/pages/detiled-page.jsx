@@ -12,7 +12,7 @@ export default function DetailedPage() {
   useEffect(() => {
     async function fetchNote() {
       try {
-        const res = await fetch(`http://localhost:3000/api/notes/${id}`);
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL || ""}/api/notes/${id}`);
         const json = await res.json();
         console.log("note data:", json.data);
 
@@ -29,7 +29,7 @@ export default function DetailedPage() {
     console.log("Updated:", { title: note?.title, content: note?.content });
     try {
       const response = await fetch(
-        `http://localhost:3000/api/notes/${note._id}`,
+        `${import.meta.env.VITE_BASE_URL || ""}/api/notes/${note._id}`,
         {
           method: "PUT",
           headers: {

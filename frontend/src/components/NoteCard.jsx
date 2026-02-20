@@ -6,7 +6,7 @@ export default function NoteCard({ note, setNotes }) {
   const navigator = useNavigate();
   async function handleDelete(id) {
     try {
-      const deleted = await fetch(`http://localhost:3000/api/notes/${id}`, {
+      const deleted = await fetch(`${import.meta.env.VITE_BASE_URL || ""}/api/notes/${id}`, {
         method: "DELETE",
       });
       if(!deleted) console.log("Note not found, can't delete");
